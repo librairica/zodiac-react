@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+// Import everything needed to use the `useQuery` hook
+import { useQuery, gql } from '@apollo/client';
 
-function App() {
+import { AddContactForm } from './AddContactForm';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="container">
+      <div class="contacts-container">
+        <h2>Zodiac Contacts ✨</h2>
+        <br/>
+        <DisplayContacts />
+        <br/>
+        <button onClick={addContact}>Add a contact</button>
+        <br/>
+        <AddContactForm/>
+      </div>
     </div>
   );
 }
 
-export default App;
+function addContact() {
+  console.log("open add contact form")
+}
+
+const GET_CONTACTS = gql`
+  query Query {
+    getContacts {
+      id
+      firstName
+      lastName
+      birthday
+    }
+  }
+`;
+
+function DisplayContacts() {
+  console.log("hi")
+
+  const { data } = useQuery(GET_CONTACTS);
+
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error :(</p>;
+  console.log(data)
+
+  return data && data.getContacts.map(({ id, firstName, lastName, birthday }) => (
+    <div key={id}>
+      <p>{firstName} {lastName } | {birthday}</p>
+      {/* <ContactRow firstName={firstName} lastName={lastName} birthday={birthday}></ContactRow> */}
+    </div>
+  ));
+}
+
+// class ContactRow extends React.Component {
+//   render() {
+//     return (
+//       <tr>
+//         <td>{this.props.firstName}</td>
+//         <td>{this.props.lastName}</td>
+//         <td>{this.props.birthday}</td>
+//       </tr>
+//     );
+//   }
+// }
