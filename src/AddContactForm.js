@@ -53,14 +53,14 @@ export class AddContactForm extends React.Component {
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
 					<label>
-						First Name:
+						First Name: 
 						<input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
 					</label>
 					<label>
-						Last Name:
+						Last Name: 
 						<input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
 					</label>
-          <input type="submit" value="Submit" />
+          <input className="submit-button" type="submit" value="Submit" />
         </form>
       );
     }

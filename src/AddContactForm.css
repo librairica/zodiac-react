@@ -1,5 +1,26 @@
+/* --melon: #FAC2B5ff;
+--cornflower-blue: #778DFAff;
+--medium-purple: #B06DF9ff;
+--maya-blue: #76BFFAff;
+--majorelle-blue: #6B44EDff; */
+
+
 .form-container {
     background-color: paleturquoise;
     display: flex;
     flex-direction: column;
+    padding: 5%;
+}
+
+.form-container label input {
+    margin: 20px;
+    background-color: blue;
+}
+
+.submit-button {
+    background-color: #6B44EDff;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
 }

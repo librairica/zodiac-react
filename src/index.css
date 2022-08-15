@@ -1,11 +1,8 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Tahoma,Verdana,Segoe,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: blue;
+  background: linear-gradient(225deg, #FAC2B5ff, #778DFAff, #B06DF9ff, #76BFFAff, #6B44EDff);
   margin: 10%;
 }
 
@@ -17,17 +14,17 @@ code {
 .container {
   display: flex;
   justify-content: center;
-  background-color: yellow;
+  background-color: #FAC2B5ff;
 }
 
 .contacts-container {
 width: 70%;
-background-color: pink;
+background-color: #FAC2B5ff;
 padding: 3%;
 }
 
 button {
-  background-color: black;
+  background-color: #6B44EDff;
   font-kerning: normal;
   border: none;
   color: white;
@@ -35,6 +32,6 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-
+  font-size: 14px;
+  font-weight: bold;
 }
