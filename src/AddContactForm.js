@@ -1,6 +1,7 @@
 import "./AddContactForm.css"
 import React from "react";
 import { useMutation, gql } from '@apollo/client';
+import { useState } from 'react';
 
 const CREATE_CONTACT = gql`
 	mutation Mutation($contactInput: ContactInput) {
@@ -16,75 +17,48 @@ const CREATE_CONTACT = gql`
 	}
 `;
 
-function CreateContact(state) {
-	useMutation(CREATE_CONTACT);
-}
 
-export class AddContactForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-				firstName: '',
-				lastName: '',
-				birthday: ''
-			};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-			console.log(event.target.name)
-			const field = event.target.name
-      this.setState({[field]: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.firstName);
-      event.preventDefault();
-			CreateContact(this.state)
-    }
-  
-    render() {
-      return (
-        <form onSubmit={this.handleSubmit} className="form-container">
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-					<label>
-						First Name: 
-						<input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
-					</label>
-					<label>
-						Last Name: 
-						<input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
-					</label>
-          <input className="submit-button" type="submit" value="Submit" />
-        </form>
-      );
-    }
+export function AddContactForm() {
+	const [inputs, setInputs] = useState({});
+
+	const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
   }
-  
-//   const root = ReactDOM.createRoot(document.getElementById('root'));
-//   root.render(<NameForm />);
-  
-// export function AddContactForm() {
-//   return (
-//     <div>
-//       <form>
-//         <div class="form-container">
-//             <label>
-//               First Name:
-//               <input type="text" name="firstName" />
-//             </label>
-//             <label>
-//               Last Name:
-//               <input type="text" name="lastName" />
-//             </label>
-//             <input type="submit" value="Submit" />
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
+
+  const [createContact, { data, loading, error }] = useMutation(CREATE_CONTACT);
+
+  if (loading) return 'Submitting...';
+  if (error) return `Submission error! ${error.message}`;
+
+  return (
+    <div>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+					alert(inputs);
+          createContact({ variables: { 
+						contactInput: { 
+							firstName: inputs.firstName,
+							lastName: inputs.lastName,
+							birthday: inputs.birthday
+						}} 
+					})
+					inputs = null;
+        }}
+      >
+        <label> First Name: 
+					<input type="text" name="firstName" value={inputs.firstName || ""} onChange={handleChange}/>
+				</label>
+				<label> Last Name: 
+					<input type="text" name="lastName" value={inputs.lastName || ""} onChange={handleChange}/>
+				</label>
+				<label> Birthday: 
+					<input type="date" name="birthday" value={inputs.birthday || ""} onChange={handleChange}/>
+				</label>
+        <button type="submit">Add Contact</button>
+      </form>
+    </div>
+  );
+}

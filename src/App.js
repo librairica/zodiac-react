@@ -13,7 +13,7 @@ export default function App() {
         <br/>
         <button onClick={addContact}>Add a contact</button>
         <br/>
-        {/* { showContactForm ?? <AddContactForm/> } */}
+        <AddContactForm/>
       </div>
     </div>
   );
