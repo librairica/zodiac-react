@@ -10,9 +10,6 @@ const CREATE_CONTACT = gql`
       firstName
       lastName
       birthday
-      # birthTimestamp
-      # sunSign
-      # sunSignEmoji
     }
   }
 `;
@@ -27,11 +24,13 @@ export function AddContactForm({toggleForm}) {
   };
 
 	const handleSubmit = (e) => {
-		console.log("handleSubmit triggered")
-		console.log(e)
-			e.preventDefault();
-			// if inputs are missing, alert and don't call createContact
-			alert(JSON.stringify(inputs));
+		e.preventDefault();
+		// alert(JSON.stringify(inputs));
+
+		// boolean representing if all inputs are provided
+		const isValid = inputs.firstName && inputs.lastName && inputs.birthday;
+		
+		if (isValid) {
 			createContact({
 				variables: {
 					contactInput: {
@@ -45,6 +44,9 @@ export function AddContactForm({toggleForm}) {
 			inputs.lastName = null;
 			inputs.birthday = null;
 			toggleForm();
+		} else {
+			alert("You are missing required fields.")
+		}
 	}
 
   const [createContact, { data, loading, error }] = useMutation(CREATE_CONTACT);
