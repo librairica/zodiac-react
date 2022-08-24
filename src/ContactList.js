@@ -10,6 +10,7 @@ const GET_CONTACTS = gql`
       firstName
       lastName
       birthday
+      sunSign
     }
   }
 `;
