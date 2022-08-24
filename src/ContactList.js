@@ -43,7 +43,7 @@ class ContactRow extends React.Component {
       <tr className="contact-row">
         <td>{this.props.firstName + " " + this.props.lastName}</td>
         <td> {getEmoji(this.props.sunSign)}</td>
-        <td>{new Date(this.props.birthday).toISOString().substring(5, 10)}</td>
+        <td>{new Date(this.props.birthday).toISOString().substring(0, 10)}</td>
         <td>
           <DeleteContact id={this.props.id}></DeleteContact>
         </td>
