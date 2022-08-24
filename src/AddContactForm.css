@@ -4,23 +4,11 @@
 --maya-blue: #76BFFAff;
 --majorelle-blue: #6B44EDff; */
 
-#form-container {
-    display: flex;
-    justify-content: center;
-}
 #add-contact-form {
     max-width: 300px;
     padding: 7%;
-    background-color: paleturquoise;
+    background: #76BFFAff;
 }
-
-/* @media only screen and (max-width: 600px) {
-    #add-contact-form {
-        padding: 2%;
-        background-color: paleturquoise;
-    }
-} */
-
 
 #form-container label input {
     margin: 20px;
