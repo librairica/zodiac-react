@@ -1,10 +1,18 @@
-td {
-    width: 250px;
-    padding-bottom: 5px;
+/* .contact-row {
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+} */
+
+tbody {
+    text-align: right;
+}
+.contacts-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .delete-button {
-    padding: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding: 0px;
+    background-color: transparent;
 }

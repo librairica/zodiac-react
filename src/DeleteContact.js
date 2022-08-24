@@ -23,7 +23,7 @@ export function DeleteContact(props) {
           deleteContact({ variables: { contactId: props.id } }).then(data => console.log("data: " + data));
         }}
       >
-        <button type="submit">Delete Contact</button>
+        <button class="delete-button" type="submit">🗑</button>
       </form>
     </div>
   );
