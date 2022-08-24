@@ -17,7 +17,7 @@ const CREATE_CONTACT = gql`
   }
 `;
 
-export function AddContactForm() {
+export function AddContactForm({toggleForm}) {
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
@@ -25,6 +25,27 @@ export function AddContactForm() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
+	const handleSubmit = (e) => {
+		console.log("handleSubmit triggered")
+		console.log(e)
+			e.preventDefault();
+			// if inputs are missing, alert and don't call createContact
+			alert(JSON.stringify(inputs));
+			createContact({
+				variables: {
+					contactInput: {
+						firstName: inputs.firstName,
+						lastName: inputs.lastName,
+						birthday: inputs.birthday,
+					},
+				},
+			});
+			inputs.firstName = null;
+			inputs.lastName = null;
+			inputs.birthday = null;
+			toggleForm();
+	}
 
   const [createContact, { data, loading, error }] = useMutation(CREATE_CONTACT);
 
@@ -36,20 +57,7 @@ export function AddContactForm() {
       <div id="add-contact-form">
 				<h2>New Contact</h2>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert(inputs);
-            createContact({
-              variables: {
-                contactInput: {
-                  firstName: inputs.firstName,
-                  lastName: inputs.lastName,
-                  birthday: inputs.birthday,
-                },
-              },
-            });
-            inputs = null;
-          }}
+          onSubmit={handleSubmit}
         >
           <div>
 						<label>

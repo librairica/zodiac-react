@@ -1,8 +1,15 @@
-/* .contact-row {
+.contact-row {
+    padding-bottom: 150px;
+}
+
+.contacts-table {
     padding-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-} */
+}
+
+td {
+    padding-bottom: 10px;
+}
+
 
 .contacts-container {
     display: flex;
