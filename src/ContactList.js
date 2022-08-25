@@ -10,6 +10,7 @@ const GET_CONTACTS = gql`
       firstName
       lastName
       birthday
+      sunSign
     }
   }
 `;
@@ -20,13 +21,14 @@ export function DisplayContacts() {
     <table className="contacts-table">
       <tbody>
         { data &&
-        data.getContacts.map(({ id, firstName, lastName, birthday }) => (
+        data.getContacts.map(({ id, firstName, lastName, birthday, sunSign }) => (
           <ContactRow
             key={id}
             id={id}
             firstName={firstName}
             lastName={lastName}
             birthday={birthday}
+            sunSign={sunSign}
           ></ContactRow>
         ))
         }
@@ -40,6 +42,7 @@ class ContactRow extends React.Component {
     return (
       <tr className="contact-row">
         <td>{this.props.firstName + " " + this.props.lastName}</td>
+        <td> {getEmoji(this.props.sunSign)}</td>
         <td>{new Date(this.props.birthday).toISOString().substring(0, 10)}</td>
         <td>
           <DeleteContact id={this.props.id}></DeleteContact>
@@ -48,3 +51,48 @@ class ContactRow extends React.Component {
     );
   }
 }
+
+function getEmoji(sign) {
+  let emoji;
+  switch(sign) {
+    case "ARIES":
+      emoji = "🐏";
+      break;
+    case "TAURUS":
+      emoji = "🐂";
+      break;
+    case "GEMINI":
+      emoji = "👯‍♀️";
+      break;
+    case "CANCER":
+      emoji = "🦀";
+      break;
+    case "LEO":
+      emoji = "🦁";
+      break;
+    case "VIRGO":
+      emoji = "🧝‍♀️";
+      break;
+    case "LIBRA":
+      emoji = "⚖️";
+      break;
+    case "SCORPIO":
+      emoji = "🦂";
+      break;
+    case "SAGITTARIUS":
+      emoji = "🏹";
+      break;
+    case "CAPRICORN":
+      emoji = "🐐";
+      break;
+    case "AQUARIUS":
+      emoji = "👽";
+      break;
+    case "PISCES":
+      emoji = "🐟";
+      break;
+    default:
+      emoji = "🤷🏻‍♀️"
+  }
+  return emoji;
+};
