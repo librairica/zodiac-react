@@ -12,17 +12,21 @@ export default function App() {
   }
   if(!showForm) {
     return (
-      <div class="container">
-        <div class="contacts-container">
-          <h2>Zodiac Contacts ✨</h2>
-          <DisplayContacts />
-          <button onClick={toggleForm}>Add a contact</button>
+      <div>
+        <div class="container">
+          <div class="contacts-container">
+            <h2>Zodiac Contacts ✨</h2>
+            <DisplayContacts />
+            <button onClick={toggleForm}>Add a contact</button>
+          </div>
         </div>
       </div>
     );
   } else {
     return (
-      <AddContactForm toggleForm={toggleForm}/>
+      <div>
+        <AddContactForm toggleForm={toggleForm}/>
+      </div>
     )
   }
 }

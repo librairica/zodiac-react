@@ -1,37 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap');
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Tahoma,Verdana,Segoe,sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(225deg, #FAC2B5ff, #778DFAff, #B06DF9ff, #76BFFAff, #6B44EDff);
-  margin: 10%;
+  background-image: url("./img/pastel-swirl.jpg");
+  margin-top: 10%;
+  height: 100%;
+
 }
 
 @media only screen and (max-width: 600px) {
   body {
     margin: 6%;
+    margin-bottom: 10px;
+    height: 100%;
+  }
+  #freepik{
+    text-align: center;
   }
 }
 
+/* html {
+  position: relative;
+} */
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* #root {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: center;
+} */
 
 .container {
   display: flex;
   justify-content: center;
-  background-color: #FAC2B5ff;
+  color: rgb(59, 38, 127);
 }
 
 .contacts-container {
-width: 100%;
-background-color: #FAC2B5ff;
+background-color: #ffc8bc;
 padding: 7%;
+-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+box-shadow: 0 0 3px 3px #ffc8bc;
+width: 300px;
+min-height: 300px;
 }
 
 button {
-  background-color: #6B44EDff;
+  background-color: rgb(131, 101, 229);
   font-kerning: normal;
   border: none;
   color: white;
@@ -41,4 +59,13 @@ button {
   display: inline-block;
   font-size: 14px;
   font-weight: bold;
+  font-family: 'Noto Sans', sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  bottom: 10px;
+
+}
+
+#freepik {
+margin-top: 20px;
 }

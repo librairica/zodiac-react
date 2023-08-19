@@ -14,14 +14,14 @@ const CREATE_CONTACT = gql`
   }
 `;
 
-export function AddContactForm({toggleForm}) {
-  const [inputs, setInputs] = useState({});
+export function AddContactForm({ toggleForm }) {
+	const [inputs, setInputs] = useState({});
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
+	const handleChange = (event) => {
+		const name = event.target.name;
+		const value = event.target.value;
+		setInputs((values) => ({ ...values, [name]: value }));
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -29,7 +29,7 @@ export function AddContactForm({toggleForm}) {
 
 		// boolean representing if all inputs are provided
 		const isValid = inputs.firstName && inputs.lastName && inputs.birthday;
-		
+
 		if (isValid) {
 			createContact({
 				variables: {
@@ -49,19 +49,19 @@ export function AddContactForm({toggleForm}) {
 		}
 	}
 
-  const [createContact, { data, loading, error }] = useMutation(CREATE_CONTACT);
+	const [createContact, { data, loading, error }] = useMutation(CREATE_CONTACT);
 
-  if (loading) return "Submitting...";
-  if (error) return `Submission error! ${error.message}`;
+	if (loading) return "Submitting...";
+	if (error) return `Submission error! ${error.message}`;
 
-  return (
-    <div id="form-container">
-      <div id="add-contact-form">
+	return (
+		<div id="form-container">
+			<div id="add-contact-form">
 				<h2>New Contact</h2>
-        <form
-          onSubmit={handleSubmit}
-        >
-          <div>
+				<form
+					onSubmit={handleSubmit}
+				>
+					<div>
 						<label>
 							First Name:
 							<input
@@ -72,7 +72,7 @@ export function AddContactForm({toggleForm}) {
 							/>
 						</label>
 					</div>
-          <div>
+					<div>
 						<label>
 							Last Name:
 							<input
@@ -83,7 +83,7 @@ export function AddContactForm({toggleForm}) {
 							/>
 						</label>
 					</div>
-          <div>
+					<div>
 						<label>
 							Birthday:
 							<input
@@ -94,9 +94,9 @@ export function AddContactForm({toggleForm}) {
 							/>
 						</label>
 					</div>
-          <div class="button-container"><button type="submit">Add Contact</button></div>
-        </form>
-      </div>
-    </div>
-  );
+					<div class="button-container"><button type="submit">Add Contact</button></div>
+				</form>
+			</div>
+		</div>
+	);
 }

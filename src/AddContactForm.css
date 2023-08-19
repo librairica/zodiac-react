@@ -1,18 +1,28 @@
 /* --melon: #FAC2B5ff;
---cornflower-blue: #778DFAff;
---medium-purple: #B06DF9ff;
---maya-blue: #76BFFAff;
---majorelle-blue: #6B44EDff; */
+--peachy: #FECBC2;
+--blue: #C9CFF3;
+--lavender: #D8AFDBB;
+--purple: #B6A2DD;
+--green: #B3DAC7; */
 
 #add-contact-form {
-    max-width: 300px;
+    width: 300px;
+    background: #C8CFF3;
     padding: 7%;
-    background: #76BFFAff;
+    -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
+    box-shadow: 0 0 3px 3px #C8CFF3;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
 }
 
 #form-container label input {
     margin: 20px;
-    background-color: rgb(206, 206, 246);
+    background-color: rgb(227, 227, 247);
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .button-container {
@@ -22,7 +32,6 @@
 }
 
 .submit-button {
-    background-color: #6B44EDff;
     color: white;
     font-size: 14px;
     font-weight: bold;
